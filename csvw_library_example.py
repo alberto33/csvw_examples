@@ -51,7 +51,7 @@ context = {
 }
 
 # Serialize the graph to JSON-LD
-jsonld_data = g.serialize(format='json-ld', context=context, indent=4)
+jsonld_data = g.serialize(format='json-ld', context=context, indent=4).decode('utf-8')
 
 print("BEG-JSON")
 print(jsonld_data)
