@@ -9,7 +9,7 @@ import os
 def convert_with_pandas():
 
     # Load CSV data
-    data = pd.read_csv('person.csv')
+    data = pd.read_csv('person_backup.csv')
 
     # Create an RDF graph
     g = Graph()
@@ -39,10 +39,10 @@ def convert_with_pandas():
 def convert_with_csvwlib2():
 
     # Load the CSVW file.
-    dataset = csvwlib.load_dataset('metadata.json')
+    dataset = csvwlib.load_dataset('person.json')
 
     # Load the CSV file.
-    with open('data.csv', 'r') as f:
+    with open('person.csv', 'r') as f:
         reader = csv.reader(f, delimiter=',')
         data = list(reader)
 
@@ -55,7 +55,7 @@ def convert_with_csvwlib2():
 
 def convert_with_csvwlib():
     # Open the metadata file and load it into a Python dict
-    with open('metadata.json') as f:
+    with open('person.json') as f:
         metadata = json.load(f)
 
     # Write the modified metadata to a temporary file
@@ -64,13 +64,13 @@ def convert_with_csvwlib():
     #     temp_path = temp.name
     #
     # # Now you can use temp_path as the metadata file path
-    # rdf_output = csvwlib.CSVWConverter.to_rdf('data.csv', temp_path)
+    # rdf_output = csvwlib.CSVWConverter.to_rdf('person.csv', temp_path)
 
     # Convert the CSVW to RDF
-    # rdf_output = CSVWConverter.to_rdf('data.csv', 'https://raw.githubusercontent.com/alberto33/csvw_examples/main/metadata.json')
+    # rdf_output = CSVWConverter.to_rdf('person.csv', 'https://raw.githubusercontent.com/alberto33/csvw_examples/main/metadata.json')
 
-    x = csvwlib.load_csvw('metadata.json')
-    rdf_output = csvwlib.CSVWConverter.to_rdf('data.csv', 'metadata.json')
+    x = csvwlib.load_csvw('person.json')
+    rdf_output = csvwlib.CSVWConverter.to_rdf('person.csv', 'person.json')
 
     # Parse the RDF data with rdflib
     g = ConjunctiveGraph()

@@ -17,14 +17,14 @@ namespace_manager.bind('n', n, override=False)
 namespace_manager.bind('schema', schema, override=False)
 
 # Load CSVW metadata
-with open('metadata.json') as f:
+with open('person.json') as f:
     metadata_dict = json.load(f)
 
 # Create a dictionary to map column names to property URLs
 column_mappings = {column['name']: URIRef(column['propertyUrl']) for column in metadata_dict['tableSchema']['columns']}
 
 # Process CSV file using CSVW metadata
-with open('data.csv', 'r') as data_file:
+with open('person.csv', 'r') as data_file:
     csv_reader = csv.DictReader(data_file)
     for row in csv_reader:
         # Create a new RDF triple for each row

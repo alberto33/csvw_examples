@@ -21,12 +21,12 @@ namespace_manager.bind('n', n, override=False)
 namespace_manager.bind('schema', schema, override=False)
 
 # Load CSVW metadata
-with open('metadata.json') as f:
+with open('person.json') as f:
     metadata_dict = json.load(f)
 metadata = csvw.Table(url=metadata_dict['url'], tableSchema=metadata_dict['tableSchema'])
 
 # Process CSV file using CSVW metadata
-with open('data.csv', 'r') as data_file:
+with open('person.csv', 'r') as data_file:
     csv_reader = csv.DictReader(data_file)
     for row in csv_reader:
         # Create a new RDF triple for each row
@@ -51,7 +51,7 @@ context = {
 }
 
 # Serialize the graph to JSON-LD
-jsonld_data = g.serialize(format='json-ld', context=context, indent=4).decode('utf-8')
+jsonld_data = g.serialize(format='json-ld', context=context, indent=4)
 
 print("BEG-JSON")
 print(jsonld_data)

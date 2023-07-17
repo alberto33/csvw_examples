@@ -1,3 +1,4 @@
-id,name,age
-1,John,30
-2,Alice,25
+name,age,city,state,zip
+George,23,NYC,NY,10106
+Mary,45,Boston,MA,89012
+Robert,12,San Francisco,CA,33012
